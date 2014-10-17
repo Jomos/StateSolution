@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StateSolution
 {
     public class YearState:IClockSetupState
     {
-        private ClockSetup clockSetup;
-        private int year;
+        private readonly ClockSetup clockSetup;
+        private int _year;
 
         public YearState(ClockSetup clockSetup, int year)
         {
             this.clockSetup = clockSetup;
-            this.year = year;
+            this._year = year;
         }
 
         public virtual void PreviousValue()
         {
-            year--;
+            _year--;
         }
 
         public virtual void NextValue()
         {
-            year++;
+            _year++;
         }
         public string Instructions
         {
@@ -33,13 +29,12 @@ namespace StateSolution
 
         public int SelectedValue
         {
-            get { return year; }
+            get { return _year; }
         }
-
 
         public void SelectValue()
         {
-           Console.WriteLine("Year set to "+year);
+           Console.WriteLine("Year set to "+_year);
             clockSetup.State = clockSetup.MonthState;
         }
     }

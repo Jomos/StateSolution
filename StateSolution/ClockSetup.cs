@@ -55,21 +55,18 @@ namespace StateSolution
             yearState = new YearState(this, DateTime.Now.Year);
             monthState = new MonthState(this, DateTime.Now.Month);
             dayState = new DayState(this, DateTime.Now.Day);
-            hourState = new HourState(this, DateTime.Now.Hour);
-            minuteState = new MinuteState(this, DateTime.Now.Minute);
+            
             finishedState = new FinishedState(this);
         }
 
         public void RotateRight()
         {
             currentState.NextValue();
-            
         }
 
         public void RotateLeft()
         {
            currentState.PreviousValue();
-            
         }
 
         public void PushKnob()
@@ -78,7 +75,6 @@ namespace StateSolution
                 currentState = yearState;
             else
                 currentState.SelectValue();
-            
         }
 
         public virtual IClockSetupState YearSetupState

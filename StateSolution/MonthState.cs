@@ -1,32 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StateSolution
 {
     public class MonthState:IClockSetupState
     {
-        private ClockSetup clockSetup;
-        private int month;
+        private readonly ClockSetup clockSetup;
+        private int _month;
 
         public MonthState(ClockSetup clockSetup,int month)
         {
             this.clockSetup = clockSetup;
-            this.month = month;
+            this._month = month;
         }
 
         public virtual void PreviousValue()
         {
-            month--;
-            if (month == 0) month = 12;
+            _month--;
+            if (_month == 0) _month = 12;
         }
 
         public virtual void NextValue()
         {
-            month++;
-            if (month == 13) month = 1;
+            _month++;
+            if (_month == 13) _month = 1;
         }
         public string Instructions
         {
@@ -35,13 +31,12 @@ namespace StateSolution
 
         public int SelectedValue
         {
-            get { return month; }
+            get { return _month; }
         }
-
 
         public void SelectValue()
         {
-           Console.WriteLine("Month set to "+month);
+           Console.WriteLine("Month set to "+_month);
             clockSetup.State = clockSetup.DayState;
         }
     }

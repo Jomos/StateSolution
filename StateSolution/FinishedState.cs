@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StateSolution
 {
     public class FinishedState:IClockSetupState
     {
-        private ClockSetup clockSetup;
+        private readonly ClockSetup clockSetup;
 
         public FinishedState(ClockSetup clockSetup)
         {
@@ -33,7 +29,6 @@ namespace StateSolution
         {
             get { return 0; }
         }
-
 
         public void SelectValue()
         {
